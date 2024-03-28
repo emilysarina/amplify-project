@@ -2,6 +2,7 @@ import { generateServerClientUsingCookies } from '@aws-amplify/adapter-nextjs/ap
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
 import * as mutations from '@/graphql/mutations';
+import styles from './page.module.css';
 // 1. Add the queries as an import
 import * as queries from '@/graphql/queries';
 
@@ -37,14 +38,8 @@ export default async function Home() {
   const todos = data.listTodos.items;
 
   return (
-    <div
-      style={{
-        maxWidth: '500px',
-        margin: '0 auto',
-        textAlign: 'center',
-        marginTop: '100px'
-      }}
-    >
+    <div className={styles.todo}>
+      <h1>To do list</h1>
       <form action={createTodo}>
         <input name="name" placeholder="Add a todo" />
         <button type="submit">Add</button>
